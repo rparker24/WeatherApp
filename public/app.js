@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $.getJSON( "./weatherData.json", function(data) {
+  $.getJSON( "./json/weatherData.json", function(data) {
     $('#date-time').html(moment.unix(data.currently.time).format("MM/DD/YYYY h:mm:ss A"), '\n');
     $('#current-temp').html(Math.round(data.currently.temperature));
     $('#current-condition').html(data.currently.summary);

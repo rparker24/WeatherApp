@@ -39,7 +39,7 @@ function getWeatherData() {
       }
       console.log(dayOfWeek + ": ", data.daily.data[i].summary, '\n');
     }
-    fs.writeFile("c:/personal/Weather/public/weatherData.json", JSON.stringify(data, null, 4), function(err) {
+    fs.writeFile("c:/personal/Weather/public/json/weatherData.json", JSON.stringify(data, null, 4), function(err) {
       if (err) {
         console.error(err);
         return;
