@@ -9,8 +9,8 @@ Added daily temps and hourly forecast - 5/14/17
 ![App screenshot 5/14/17](./public/images/screencapture-weatherapp-5-14-17.png)
 
 Next steps:
-    Keep adding more data from API (precipitation, wind, etc.)
-    find and add icons
+    Keep adding more data from API (precipitation, wind, etc.),
+    find and add icons,
     move data storage from json file to a DB (mongoDB, firebase?)
 
 

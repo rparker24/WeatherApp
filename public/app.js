@@ -16,7 +16,7 @@ $(document).ready(function() {
     }
 
     for (i = 0; i < 9; i++) {
-      // limited to 9 results, to display all available switch 10 with data.hourly.data.length
+      // limited to 9 results, to display all available switch 9 with data.hourly.data.length
       var info = data.hourly.data[i];
       $('#hourly-list').append("<li><h4>" + moment.unix(info.time).format("ddd, hA") + "</h4><h6>" + "Summary: " + info.summary + "</h6><p>Temp: " + Math.round(info.temperature) + "&#8457;</p></li>");
     }
