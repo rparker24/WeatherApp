@@ -12,7 +12,13 @@ $(document).ready(function() {
       } else {
         var dayOfWeek = "Tomorrow";
       }
-      $('#week-daily-forecast').append("<li class='weekday'>" + "<p>" + dayOfWeek + ": " + data.daily.data[i].summary + "</p>" + "<p>High: <span class='high-temp'>" + Math.round(data.daily.data[i].temperatureMax) + "</span>&#8457; - Low: <span class='low-temp'>" + Math.round(data.daily.data[i].temperatureMin) + "</span>&#8457;</p></li>");
+      $('#week-daily-forecast').append("<li class='weekday'>" + "<p><strong>" + dayOfWeek + ": </strong>" + data.daily.data[i].summary + "</p>" + "<p>High: <span class='high-temp'>" + Math.round(data.daily.data[i].temperatureMax) + "</span>&#8457; - Low: <span class='low-temp'>" + Math.round(data.daily.data[i].temperatureMin) + "</span>&#8457;</p></li>");
+    }
+
+    for (i = 0; i < 9; i++) {
+      // limited to 9 results, to display all available switch 10 with data.hourly.data.length
+      var info = data.hourly.data[i];
+      $('#hourly-list').append("<li><h4>" + moment.unix(info.time).format("ddd, hA") + "</h4><h6>" + "Summary: " + info.summary + "</h6><p>Temp: " + Math.round(info.temperature) + "&#8457;</p></li>");
     }
   });
 });
