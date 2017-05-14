@@ -12,7 +12,7 @@ $(document).ready(function() {
       } else {
         var dayOfWeek = "Tomorrow";
       }
-      $('#week-daily-forecast').append("<li>" + dayOfWeek + ": " + data.daily.data[i].summary + "<li>");
+      $('#week-daily-forecast').append("<li class='weekday'>" + "<p>" + dayOfWeek + ": " + data.daily.data[i].summary + "</p>" + "<p>High: <span class='high-temp'>" + Math.round(data.daily.data[i].temperatureMax) + "</span>&#8457; - Low: <span class='low-temp'>" + Math.round(data.daily.data[i].temperatureMin) + "</span>&#8457;</p></li>");
     }
   });
 });

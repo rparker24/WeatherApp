@@ -30,6 +30,8 @@ function getWeatherData() {
     console.log("Current Temp: ", data.currently.temperature, "°F", '\n');
     console.log("Next Hour: ", data.minutely.summary, '\n');
     console.log("Today: ", data.hourly.summary, '\n');
+		console.log("Today's High: ", Math.round(data.daily.data[0].temperatureMax), "°F");
+		console.log("Today's Low: ", Math.round(data.daily.data[0].temperatureMin), "°F", '\n');
     console.log("This Week: ", data.daily.summary, '\n');
     for (i = 1; i < data.daily.data.length; i++) {
       if (i > 1) {
@@ -37,7 +39,9 @@ function getWeatherData() {
       } else {
         var dayOfWeek = "Tomorrow";
       }
-      console.log(dayOfWeek + ": ", data.daily.data[i].summary, '\n');
+      console.log(dayOfWeek + ": ", data.daily.data[i].summary);
+			console.log("High:", Math.round(data.daily.data[i].temperatureMax), "°F");
+			console.log("Low:", Math.round(data.daily.data[i].temperatureMin), "°F", '\n');
     }
     fs.writeFile("c:/personal/Weather/public/json/weatherData.json", JSON.stringify(data, null, 4), function(err) {
       if (err) {
