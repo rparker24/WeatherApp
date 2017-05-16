@@ -3,9 +3,15 @@
 }
 
 .weather-forecast {
-  width: 70%;
+  width: 50%;
   float: left;
   border: 2px solid blue;
+}
+
+.minutely-forecast {
+  width: 20%;
+  float: left;
+  border: 2px solid yellow;
 }
 
 .hourly-forecast {
@@ -16,4 +22,5 @@
 
 footer {
   clear: both;
+  text-align: center;
 }

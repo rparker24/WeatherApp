@@ -6,6 +6,7 @@ $(document).ready(function() {
     $('#next-hour-forecast').html(data.minutely.summary);
     $('#today-forecast').html(data.hourly.summary);
     $('#week-forecast').html(data.daily.summary);
+
     for (i = 1; i < data.daily.data.length; i++) {
       if (i > 1) {
         var dayOfWeek = moment.unix(data.currently.time + (i * 86400)).format("dddd");
@@ -19,6 +20,12 @@ $(document).ready(function() {
       // limited to 9 results, to display all available switch 9 with data.hourly.data.length
       var info = data.hourly.data[i];
       $('#hourly-list').append("<li><h4>" + moment.unix(info.time).format("ddd, hA") + "</h4><h6>" + "Summary: " + info.summary + "</h6><p>Temp: " + Math.round(info.temperature) + "&#8457;</p></li>");
+    }
+
+    for (i = 0; i < 12; i++) {
+      // limited to 12 results, to display all available switch 12 with data.minutely.data.length
+      var minInfo = data.minutely.data[i];
+      $('#minutely-list').append("<li><p>Time: " + moment.unix(minInfo.time).format("h:mm A") + "</p><p>Chance of Precipitation: " + minInfo.precipProbability + "%</p></li>");
     }
   });
 });
