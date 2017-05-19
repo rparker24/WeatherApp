@@ -24,10 +24,10 @@ $(document).ready(function() {
       $('#hourly-list').append("<li><h4>" + moment.unix(info.time).format("ddd, hA") + "</h4><h6>" + "Summary: " + info.summary + "</h6><p>Temp: " + Math.round(info.temperature) + "&#8457;</p></li>");
     }
 
-    for (i = 0; i < 12; i++) {
-      // limited to 12 results, to display all available switch 12 with data.minutely.data.length
+    for (i = 0; i < 25; i++) {
+      // limited to 25 results, to display all available switch 25 with data.minutely.data.length
       var minInfo = data.minutely.data[i];
-      $('#minutely-list').append("<li><p>Time: " + moment.unix(minInfo.time).format("h:mm A") + "</p><p>Chance of Precipitation: " + minInfo.precipProbability + "%</p></li>");
+      $('#minutely-list').append("<li><p>" + moment.unix(minInfo.time).format("h:mm A") + " - " + minInfo.precipProbability + "%</p></li>");
     }
   });
 });
