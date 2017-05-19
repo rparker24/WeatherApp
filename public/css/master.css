@@ -8,6 +8,10 @@
   border: 2px solid blue;
 }
 
+.current-weather, .today-high-low {
+  display: inline-block;
+}
+
 .minutely-forecast {
   width: 20%;
   float: left;

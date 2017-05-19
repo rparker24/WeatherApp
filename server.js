@@ -14,7 +14,6 @@ app.get('/', function(req, res) {
 
 var api_key = key.DarkSkyKey;
 
-
 var myLatLong = [40.863419, -74.279168];
 var location = myLatLong.join(',');
 

@@ -3,6 +3,8 @@ $(document).ready(function() {
     $('#date-time').html(moment.unix(data.currently.time).format("MM/DD/YYYY h:mm:ss A"), '\n');
     $('#current-temp').html(Math.round(data.currently.temperature));
     $('#current-condition').html(data.currently.summary);
+    $('#today-high').html(Math.round(data.daily.data[0].temperatureMax));
+    $('#today-low').html(Math.round(data.daily.data[0].temperatureMin));
     $('#next-hour-forecast').html(data.minutely.summary);
     $('#today-forecast').html(data.hourly.summary);
     $('#week-forecast').html(data.daily.summary);
