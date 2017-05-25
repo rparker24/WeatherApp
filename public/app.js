@@ -27,7 +27,7 @@ $(document).ready(function() {
     for (i = 0; i < 25; i++) {
       // limited to 25 results, to display all available switch 25 with data.minutely.data.length
       var minInfo = data.minutely.data[i];
-      $('#minutely-list').append("<li><p>" + moment.unix(minInfo.time).format("h:mm A") + " - " + minInfo.precipProbability + "%</p></li>");
+      $('#minutely-list').append("<li><p>" + moment.unix(minInfo.time).format("h:mm A") + " - " + (minInfo.precipProbability * 100) + "%</p></li>");
     }
   });
 });
