@@ -12,8 +12,11 @@
   "author": "Robert M. Parker",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "express": "^4.15.2",
     "moment": "^2.18.1",
+    "mongoose": "^4.10.2",
+    "morgan": "^1.8.2",
     "request": "^2.81.0"
   }
 }
