@@ -35,14 +35,13 @@ var myLatLong = [40.863419, -74.279168];
 var location = myLatLong.join(',');
 
 var queryURL = "https://api.darksky.net/forecast/" + api_key + "/" + location;
-console.log('pre-query url: ', queryURL);
+
 request(queryURL, function(error, response, body) {
   if (!error && response.statusCode == 200) {
     var data = JSON.parse(body);
   }
 
-	var dataType = typeof(data);
-	console.log(dataType);
+	// console.log(typeof(data));
 
 	var result = {};
 
@@ -66,7 +65,10 @@ app.get('/', function(req, res) {
 });
 
 app.get('/weather', function(req, res) {
-	Weather.find({}, function(err, doc) {
+	// Weather.find({}, function(err, doc) {
+	Weather.findOne({})
+		.sort({ created_at: -1 })
+		.exec(function(err, doc) {
 		if (err) {
 			console.log(err);
 		} else {

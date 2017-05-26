@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var moment = require('moment');
 
 var WeatherDataSchema = new Schema({
   data: {
@@ -7,8 +8,18 @@ var WeatherDataSchema = new Schema({
     required: "The weather data is required"
   },
   created_at: {
-    type: Date,
-    default: Date.now
+    date: {
+      type: Date,
+      default: Date.now
+    },
+    readable: {
+      type: String,
+      default: moment().format("MMMM Do YYYY, h:mm:ss A")
+    },
+    unix: {
+      type: Number,
+      default: moment().unix()
+    }
   }
 });
 

@@ -1,8 +1,8 @@
 $(document).ready(function() {
   $.getJSON( "/weather", function(data) {
     console.log('datatype: ', typeof(data));
-    console.log(data[0]);
-    var data1 = data[0].data;
+    console.log(data);
+    var data1 = data.data;
     $('#date-time').html(moment.unix(data1.currently.time).format("MM/DD/YYYY h:mm:ss A"), '\n');
     $('#current-temp').html(Math.round(data1.currently.temperature));
     $('#current-condition').html(data1.currently.summary);
@@ -30,7 +30,7 @@ $(document).ready(function() {
     for (i = 0; i < 25; i++) {
       // limited to 25 results, to display all available switch 25 with data.minutely.data.length
       var minInfo = data1.minutely.data[i];
-      $('#minutely-list').append("<li><p>" + moment.unix(minInfo.time).format("h:mm A") + " - " + (minInfo.precipProbability * 100) + "%</p></li>");
+      $('#minutely-list').append("<li><p>" + moment.unix(minInfo.time).format("h:mm A") + " - " + Math.round((minInfo.precipProbability * 100)) + "%</p></li>");
     }
   });
 });
