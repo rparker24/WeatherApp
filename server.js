@@ -28,7 +28,6 @@ db.once('open', function() {
 
 var Weather = require('./models/weatherData');
 
-
 var api_key = key.DarkSkyKey;
 
 var myLatLong = [40.863419, -74.279168];
@@ -36,45 +35,45 @@ var location = myLatLong.join(',');
 
 var queryURL = "https://api.darksky.net/forecast/" + api_key + "/" + location;
 
-request(queryURL, function(error, response, body) {
-  if (!error && response.statusCode == 200) {
-    var data = JSON.parse(body);
-  }
-
-	// console.log(typeof(data));
-
-	var result = {};
-
-	result.data = data;
-
-	var weatherData = new Weather (result);
-
-	weatherData.save(function(err, doc) {
-		if (err) {
-			console.log(err);
+setInterval(function() {
+	request(queryURL, function(error, response, body) {
+		if (!error && response.statusCode == 200) {
+			var data = JSON.parse(body);
 		} else {
-			console.log(doc);
+			console.log("HTTP: ", response.statusCode);
+			console.log(error);
 		}
-	});
-	// removed fs write to json file
+		var result = {};
+		result.data = data;
 
-});
+		var weatherData = new Weather (result);
+
+		weatherData.save(function(err, doc) {
+			if (err) {
+				console.log(err);
+			} else {
+				console.log("Weather data received", moment().format("MM/DD/YYYY h:mm:ss A"));
+			}
+		});
+		// removed fs write to json file
+	});
+}, 600000);
 
 app.get('/', function(req, res) {
 	res.send(index.html);
 });
 
 app.get('/weather', function(req, res) {
-	// Weather.find({}, function(err, doc) {
+
 	Weather.findOne({})
 		.sort({ created_at: -1 })
 		.exec(function(err, doc) {
-		if (err) {
-			console.log(err);
-		} else {
-			res.json(doc);
-		}
-	});
+			if (err) {
+				console.log(err);
+			} else {
+				res.json(doc);
+			}
+		});
 });
 
 
